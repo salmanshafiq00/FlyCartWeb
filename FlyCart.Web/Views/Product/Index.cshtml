@@ -7,20 +7,45 @@
     @using (Html.BeginForm("Index", "Product", FormMethod.Post))
     {
         @Html.TextBox("searchString", "", new { @class = "form-control" })
-        <input type="button" id="btnSearch" name="" value="Search" class="btn btn-primary"/>
+        <input type="button" id="btnSearch" name="" value="Search" class="btn btn-primary" />
     }
 
 </div>
-@Html.ActionLink("Create", "Create","", new { @class = "btn btn-info" })
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProduct">
+    Create
+</button>
+@*@Html.ActionLink("Create", "Create", "", new { @class = "btn btn-info", data_toggle = "modal", data_target = "#createProduct" })*@
 @{
     Html.RenderAction("ProductList");
 }
 
+<!-- Modal For Product-->
+<div class="modal fade" id="createProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h3 class="modal-title" id="productHeader">Create Product</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body container">
+                <div style="margin-left: 100px">
+                    @Html.Partial("_PartialCreate")
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $("#btnSearch").click(() => {
         var searchValue = $("#searchString").val();
         $.ajax({
-            url: "@Url.Action("ProductList","Product")",
+            url: "@Url.Action("ProductList", "Product")",
             data: {
                 searchString: searchValue
             }
@@ -34,3 +59,8 @@
             ;
     });
 </script>
+
+
+
+
+
