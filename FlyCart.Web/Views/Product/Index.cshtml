@@ -3,7 +3,34 @@
 }
 
 <h2>Index</h2>
+<div>
+    @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+    {
+        @Html.TextBox("searchString", "", new { @class = "form-control" })
+        <input type="button" id="btnSearch" name="" value="Search" class="btn btn-primary"/>
+    }
 
-<table>
-</table>
+</div>
+@Html.ActionLink("Create", "Create","", new { @class = "btn btn-info" })
+@{
+    Html.RenderAction("ProductList");
+}
 
+<script>
+    $("#btnSearch").click(() => {
+        var searchValue = $("#searchString").val();
+        $.ajax({
+            url: "@Url.Action("ProductList","Product")",
+            data: {
+                searchString: searchValue
+            }
+        })
+            .done((response) => {
+                $("#ProductTableContainer").html(response);
+            })
+            .fail((XMLHttpRequest, textStatus, errorThrown) => {
+                alert("Fail!");
+            })
+            ;
+    });
+</script>

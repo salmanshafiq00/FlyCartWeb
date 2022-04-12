@@ -13,13 +13,15 @@ namespace FlyCart.Web.Controllers
         ProductServices productServices = new ProductServices();
         public ActionResult Index()
         {
+           
             return View();
         }
 
-        public ActionResult ProductList()
+        public ActionResult ProductList(string searchString)
         {
             var products = productServices.GetProducts();
-            return View(products);
+           products = productServices.searchProduct(searchString);
+            return PartialView(products);
         }
 
         [HttpGet]
@@ -32,7 +34,7 @@ namespace FlyCart.Web.Controllers
         public ActionResult Create(Product product)
         {
             productServices.CreateProduct(product);
-            return RedirectToAction("ProductList", "Product");
+            return RedirectToAction("Index", "Product");
         }
     }
 }

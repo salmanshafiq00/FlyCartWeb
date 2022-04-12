@@ -3,38 +3,47 @@
     ViewBag.Title = "ProductList";
 }
 
-<h2>ProductList</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>ProductID</th>
-            <th>ProductName</th>
-            <th>CatagoryID</th>
-            <th>ShortDescription</th>
-            <th>LongDescription</th>
-            <th>Price</th>
-            <th>Weight</th>
-            <th>Images</th>
-            <th>Stock</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-    @foreach (var product in Model)
-    {
-        <tr>
-            <td>@product.ProductID</td>
-            <td>@product.ProductName</td>
-            <td>@product.CatagoryID</td>
-            <td>@product.ShortDescription</td>
-            <td>@product.LongDescription</td>
-            <td>@product.Price</td>
-            <td>@product.Weight</td>
-            <td>@product.Images</td>
-            <td>@product.Stock</td>
-        </tr>
-    }
+<div id="ProductTableContainer">
+    <table>
+        <thead>
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>CatagoryID</th>
+                <th>ShortDescription</th>
+                <th>LongDescription</th>
+                <th>Price</th>
+                <th>Weight</th>
+                <th>Images</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.ProductID</td>
+                <td>@product.ProductName</td>
+                <td>@product.CatagoryID</td>
+                <td>@product.ShortDescription</td>
+                <td>@product.LongDescription</td>
+                <td>@product.Price</td>
+                <td>@product.Weight</td>
+                <td>@product.Images</td>
+                <td>@product.Stock</td>
+                <td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { product.ProductID })
+                    @Html.ActionLink("Delete", "Delete", new { product.ProductID })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
+
+
+

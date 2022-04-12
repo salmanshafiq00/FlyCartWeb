@@ -51,5 +51,22 @@ namespace FlyCart.Services
                 context.SaveChanges();
             }
         }
+
+        public List<Product> searchProduct(string searchString)
+        {
+            using (var context = new FlyCartContext())
+            {
+                var product = from p in context.Products select p;
+
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    product = product.Where(s => s.ProductName.ToUpper().Contains(searchString));
+                    
+                }
+                return product.ToList();
+            }
+            
+
+        }
     }
 }
