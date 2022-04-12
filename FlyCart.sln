@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyCart.Web", "FlyCart.Web\FlyCart.Web.csproj", "{9070D6C8-3DC7-4B13-A58B-15044955C067}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyCart.Entities", "FlyCart.Entities\FlyCart.Entities.csproj", "{E82BA38C-5586-40B1-B584-66EB05E84E8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyCart.Database", "FlyCart.Database\FlyCart.Database.csproj", "{7FF9573C-62E2-4B96-B403-34C7F7A9D775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyCart.Services", "FlyCart.Services\FlyCart.Services.csproj", "{D7082368-CBFF-4A47-BC48-BACA50783907}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9070D6C8-3DC7-4B13-A58B-15044955C067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9070D6C8-3DC7-4B13-A58B-15044955C067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9070D6C8-3DC7-4B13-A58B-15044955C067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9070D6C8-3DC7-4B13-A58B-15044955C067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E82BA38C-5586-40B1-B584-66EB05E84E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E82BA38C-5586-40B1-B584-66EB05E84E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E82BA38C-5586-40B1-B584-66EB05E84E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E82BA38C-5586-40B1-B584-66EB05E84E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FF9573C-62E2-4B96-B403-34C7F7A9D775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FF9573C-62E2-4B96-B403-34C7F7A9D775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FF9573C-62E2-4B96-B403-34C7F7A9D775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FF9573C-62E2-4B96-B403-34C7F7A9D775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7082368-CBFF-4A47-BC48-BACA50783907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7082368-CBFF-4A47-BC48-BACA50783907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7082368-CBFF-4A47-BC48-BACA50783907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7082368-CBFF-4A47-BC48-BACA50783907}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D0A9EF0-A0BF-4387-9737-6AE0BC03D49E}
+	EndGlobalSection
+EndGlobal
