@@ -34,7 +34,7 @@ namespace FlyCart.Web.Controllers
         public ActionResult Create(Product product)
         {
             productServices.CreateProduct(product);
-            return RedirectToAction("Index", "Product");
+            return RedirectToAction("ProductList", "Product");
         }
     }
 }

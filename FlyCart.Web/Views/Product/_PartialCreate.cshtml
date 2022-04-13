@@ -1,6 +1,6 @@
 ﻿
 @model Product
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "Create" }))
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "CreateForm" }))
 {
     <div class="form-group">
         @Html.HiddenFor(p => p.ProductID)
@@ -65,12 +65,12 @@
         $.ajax({
             method: "POST",
             url: "@Url.Action("Create", "Product")",
-            data: $("#Create").serialize()
+            data: $("#CreateForm").serialize()
 
         })
             .done((response) => {
                 $("#ProductTableContainer").html(response);
-                $("#Create").empty();
+                $("#CreateForm").trigger("reset");
             })
             .fail((XMLHttpRequest, textStatus, errorThrown) => {
                 alert("Fail!");
