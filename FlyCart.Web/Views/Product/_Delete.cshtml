@@ -1,0 +1,44 @@
+﻿
+@model Product
+@{
+    ViewBag.Title = "Delete Product";
+}
+<div class="modal-header">
+    <h3 class="modal-title ml-md-3" id="exampleModalLongTitle">Delete Product</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <h2 class="ml-md-3">Are you sure you want to delete catagory(@Model.ProductID) ?</h2>
+    @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id="dltForm" }))
+    {
+        @Html.HiddenFor(c => c.ProductID, Model.ProductID)
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnDeleteClose" data-dismiss="modal">Close</button>
+            <input type="button" class="btn btn-danger"id="btnDelete" name="" value="Delete" />
+        </div>
+    }
+</div>
+<br />
+@Html.ActionLink("Product List", "Index", "",new { @class="ml-md-2"})
+
+<script>
+    $("#btnDelete").click(() => {
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("Delete", "Product")",
+            data: $("#dltForm").serialize()
+
+        })
+            .done((response) => {
+                $("#ProductTableContainer").html(response);
+                $(".modal-backdrop.in").css("display", "none");
+                /*$("#CreateForm").trigger("reset");*/
+            })
+            .fail((XMLHttpRequest, textStatus, errorThrown) => {
+                alert("Fail!");
+            })
+            ;
+    });
+</script>

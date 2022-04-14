@@ -1,0 +1,87 @@
+﻿
+@model Product
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "EditForm" }))
+{
+    <div class="form-group">
+        @Html.HiddenFor(p => p.ProductID)
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.ProductName, new { @class = "control-label" })
+        @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.CatagoryID, new { @class = "controll-label" })
+        @Html.TextBoxFor(p => p.CatagoryID, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.ShortDescription, new { @class = "control-label" })
+        @Html.TextBoxFor(p => p.ShortDescription, new { @class = "form-control" })
+
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.LongDescription, new { @class = "control-label" })
+        @Html.TextBoxFor(p => p.LongDescription, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Price, new { @class = "control-label" })
+        @Html.TextBoxFor(p => p.Price, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Weight, new { @class = "control-label" })
+        @Html.TextBoxFor(p => p.Weight, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Images, new { @class = "control-label" })
+        @Html.TextBoxFor(p => p.Images, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Stock, new { @class = "control-label" })
+        @Html.TextBoxFor(p => p.Stock, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        <input type="submit" id="btnEdit" value="Update" class="btn btn-primary" />
+    </div>
+
+}
+
+@*<script>
+    $("#btnEdit").click(() => {
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("Edit", "Product")",
+            data: $("#CreateForm").serialize()
+
+        })
+            .done((response) => {
+                $("#ProductTableContainer").html(response);
+                $("#CreateForm").trigger("reset");
+            })
+            .fail((XMLHttpRequest, textStatus, errorThrown) => {
+                alert("Fail!");
+            })
+            ;
+    });
+</script>*@

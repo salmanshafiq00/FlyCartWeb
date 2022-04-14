@@ -36,5 +36,34 @@ namespace FlyCart.Web.Controllers
             productServices.CreateProduct(product);
             return RedirectToAction("ProductList", "Product");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int ProductID)
+        {
+            var sldProduct = productServices.GetProduct(ProductID);
+            return View(sldProduct);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            productServices.EditProduct(product);
+            return RedirectToAction("Index", "Product");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int ProductID)
+        {
+            var sldProduct = productServices.GetProduct(ProductID);
+            return PartialView(sldProduct);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Product product)
+        {
+            var dltProduct = productServices.GetProduct(product.ProductID);
+            productServices.DeleteProduct(dltProduct);
+            return RedirectToAction("ProductList", "Product");
+        }
     }
 }
