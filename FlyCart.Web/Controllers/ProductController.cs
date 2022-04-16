@@ -57,9 +57,14 @@ namespace FlyCart.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase Images)
         {
-            
+            var fileName = Images.FileName;
+            var localPath = Server.MapPath("~/Images/") + fileName;
+            var serverPath = "~/Images/" + fileName;           
+            Images.SaveAs(localPath);
+
+            product.Images = serverPath;
             productServices.EditProduct(product);
             return RedirectToAction("Index", "Product");
         }

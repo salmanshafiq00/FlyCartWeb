@@ -1,5 +1,4 @@
-﻿
-@model Product
+﻿@model Product
 @{
     ViewBag.Title = "Edit";
 }
@@ -7,7 +6,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "EditForm" }))
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "EditForm", enctype = "multipart/form-data" }))
 {
     <div class="form-group">
         @Html.HiddenFor(p => p.ProductID)
@@ -22,8 +21,26 @@
 
     <div class="form-group">
         @Html.LabelFor(p => p.CatagoryID, new { @class = "controll-label" })
-        @Html.TextBoxFor(p => p.CatagoryID, new { @class = "form-control" })
+
+
+        <select name="CatagoryID" class="form-control">
+            @foreach (var item in ViewBag.Catagory)
+            {
+                if (item.CatagoryID == Model.CatagoryID)
+                {
+                    <option value="@item.CatagoryID" class="dropdown-item" selected="selected">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.CatagoryID" class="dropdown-item">@item.Name</option>
+                }
+            }
+        </select>
+
+
     </div>
+
+
 
     <div class="form-group">
         @Html.LabelFor(p => p.ShortDescription, new { @class = "control-label" })
@@ -51,13 +68,14 @@
 
     <div class="form-group">
         @Html.LabelFor(p => p.Images, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Images, new { @class = "form-control" })
+        @*<input type="hidden" name="Images" id="Images" />*@
+        <input type="file" name="Images" class="form-control" id="Images" />
 
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(p => p.Stock, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Stock, new { @class = "form-control" })
+    <div class="form-check-inline">
+        @Html.LabelFor(p => p.Stock, new { @class = "form-check-label pr-1" })
+        @Html.CheckBoxFor(p => p.Stock, new { @class = "form-check-input", id = "Stock" })
 
     </div>
 
@@ -68,19 +86,19 @@
 }
 
 @*<script>
-    $("#btnEdit").click(() => {
-        $.ajax({
-            method: "POST",
-            url: "@Url.Action("Edit", "Product")",
-            data: $("#EditForm").serialize()
-        })
-            .done((response) => {
-                $("#ProductTableContainer").html(response);
-                $("#CreateForm").trigger("reset");
+        $("#btnEdit").click(() => {
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("Edit", "Product")",
+                data: $("#EditForm").serialize()
             })
-            .fail((XMLHttpRequest, textStatus, errorThrown) => {
-                alert("Fail!");
-            })
-            ;
-    });
-</script>*@
+                .done((response) => {
+                    $("#ProductTableContainer").html(response);
+                    $("#CreateForm").trigger("reset");
+                })
+                .fail((XMLHttpRequest, textStatus, errorThrown) => {
+                    alert("Fail!");
+                })
+                ;
+        });
+    </script>*@
