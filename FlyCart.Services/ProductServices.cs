@@ -19,14 +19,10 @@ namespace FlyCart.Services
         }
         public List<Product> GetProducts()
         {
-            //using (var context = new FlyCartContext())
-            //{
-            var context = new FlyCartContext();
-            //var pList = from p in context.Products.Include("Catagory") select p;
-            var pList = context.Products.Include("Catagory");
-                return pList.ToList();
-
-            //}
+            using(var context = new FlyCartContext())
+            {
+              return  context.Products.Include("Catagory").ToList();
+            }
         }
         public void CreateProduct(Product product)
         {
@@ -59,11 +55,11 @@ namespace FlyCart.Services
         {
             using (var context = new FlyCartContext())
             {
-                var product = from p in context.Products select p;
+                var product = context.Products.Include("Catagory").ToList();
 
                 if (!string.IsNullOrEmpty(searchString))
                 {
-                    product = product.Where(s => s.ProductName.ToUpper().Contains(searchString));
+                    product = (List<Product>) product.Where(s => s.ProductName.ToUpper().Contains(searchString.ToUpper()));
                     
                 }
                 return product.ToList();

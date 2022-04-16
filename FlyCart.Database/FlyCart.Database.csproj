@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202204152052228_idNotRequired.Designer.cs">
       <DependentUpon>202204152052228_idNotRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204160606358_removeVirtual.cs" />
+    <Compile Include="Migrations\202204160606358_removeVirtual.Designer.cs">
+      <DependentUpon>202204160606358_removeVirtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204152052228_idNotRequired.resx">
       <DependentUpon>202204152052228_idNotRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204160606358_removeVirtual.resx">
+      <DependentUpon>202204160606358_removeVirtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

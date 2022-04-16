@@ -16,14 +16,16 @@ namespace FlyCart.Web.Controllers
         ProductServices productServices = new ProductServices();
         public ActionResult Index()
         {
-            ViewBag.Catagory = new SelectList(db.Catagories, "ID", "Name"); 
+            //ViewData["catagory"] = new SelectList(db.Catagories, "ID", "Name"); 
+            ViewData["catagory"] = db.Catagories.ToList(); 
+
             return View();
         }
 
         public ActionResult ProductList(string searchString)
         {
             var products = productServices.GetProducts();
-           products = productServices.searchProduct(searchString);
+            productServices.searchProduct(searchString);
             return PartialView(products);
         }
 
@@ -57,21 +59,22 @@ namespace FlyCart.Web.Controllers
         [HttpPost]
         public ActionResult Edit(Product product)
         {
+            
             productServices.EditProduct(product);
             return RedirectToAction("Index", "Product");
         }
 
-        [HttpGet]
-        public ActionResult Delete(int ProductID)
-        {
-            var sldProduct = productServices.GetProduct(ProductID);
-            return PartialView(sldProduct);
-        }
+        //[HttpGet]
+        //public ActionResult Delete(int ProductID)
+        //{
+        //    var sldProduct = productServices.GetProduct(ProductID);
+        //    return PartialView(sldProduct);
+        //}
 
         [HttpPost]
-        public ActionResult Delete(Product product)
+        public ActionResult Delete(int ProductID)
         {
-            var dltProduct = productServices.GetProduct(product.ProductID);
+            var dltProduct = productServices.GetProduct(ProductID);
             productServices.DeleteProduct(dltProduct);
             return RedirectToAction("ProductList", "Product");
         }

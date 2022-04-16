@@ -1,8 +1,11 @@
-﻿@{
+﻿@model Product 
+@{
     ViewBag.Title = "Index";
+     
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Product List</h2>
+@*Search Mechanism*@
 <div>
     @using (Html.BeginForm("Index", "Product", FormMethod.Post, new { @class = "form-inline" }))
     {
@@ -12,9 +15,9 @@
     }
 
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProduct">
-    Create
-</button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProduct"> Create </button>
+
 <div id="productListSection">
     @{
         Html.RenderAction("ProductList");
@@ -22,7 +25,7 @@
 </div>
 
 
-@*Modal For Product*@
+@*Modal For Product Create*@
 <div class="modal fade" id="createProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -34,7 +37,7 @@
             </div>
             <div class="modal-body container">
                 <div style="margin-left: 100px">
-                    @Html.Partial("_PartialCreate")
+                    @Html.Partial("_PartialCreate",null, new ViewDataDictionary { { "Catagory", (List<Catagory>)ViewData["catagory"]}})
                     @*@Html.Partial("_PartialCreate", null, new ViewDataDictionary { { "ViewBag", catagory } })*@
 
                 </div>
