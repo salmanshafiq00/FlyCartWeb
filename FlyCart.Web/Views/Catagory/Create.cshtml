@@ -3,10 +3,19 @@
     ViewBag.Title = "Create Catagory";
 }
 
-<h2>Create</h2>
+<h2>Create Catagory</h2>
+@if (ViewBag.err != null)
+{
+    <ol>
+        @foreach (var item in ViewBag.err)
+        {
+            <li class="text-danger">@item.ErrorMessage</li>
+        }
+    </ol>
+}
 @using (Html.BeginForm("Create", "Catagory", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    @Html.HiddenFor(c => c.ID);
+    @Html.HiddenFor(c => c.CatagoryID);
 
     <div class="form-group">
         @Html.LabelFor(c => c.Name, new { @class = "col-md-2 control-label" })

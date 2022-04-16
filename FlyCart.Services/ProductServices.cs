@@ -19,11 +19,14 @@ namespace FlyCart.Services
         }
         public List<Product> GetProducts()
         {
-            using (var context = new FlyCartContext())
-            {
-                return context.Products.ToList();
+            //using (var context = new FlyCartContext())
+            //{
+            var context = new FlyCartContext();
+            //var pList = from p in context.Products.Include("Catagory") select p;
+            var pList = context.Products.Include("Catagory");
+                return pList.ToList();
 
-            }
+            //}
         }
         public void CreateProduct(Product product)
         {

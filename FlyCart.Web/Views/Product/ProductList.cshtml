@@ -5,7 +5,7 @@
 
 
 <div id="ProductTableContainer">
-    <table>
+    <table class="table table-striped table-hover table-bordered">
         <thead>
             <tr>
                 <th>ProductID</th>
@@ -32,20 +32,20 @@
                 <td>@product.LongDescription</td>
                 <td>@product.Price</td>
                 <td>@product.Weight</td>
-                <td>@product.Images</td>
+                <td>
+                    <img src="@Url.Content(product.Images)" alt="img" width="70" height="70" />
+                </td>
                 <td>@product.Stock</td>
                 <td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { product.ProductID }, new { @class = "editProductBtn", id = "editProductBtn" })
-                    @Html.ActionLink("Delete", "Delete", new { product.ProductID }, new { @class = "deleteProductBtn", data_toggle = "modal", data_target = "#deleteProductBtn" })
-                    @*<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProductBtn">
-                            Dlt
-                        </button>*@
+                    @Html.ActionLink("Edit", "Edit", new { product.ProductID }, new { @class = "editProductBtn btn btn-info", id = "editProductBtn" })
+                    @Html.ActionLink("Delete", "Delete", new { product.ProductID }, new { @class = "deleteProductBtn btn btn-danger", data_toggle = "modal", data_target = "#deleteProductBtn" })
                 </td>
             </tr>
         }
 
     </table>
+
     <!-- Modal -->
     <div class="modal fade" id="deleteProductBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -67,6 +67,25 @@
         </div>
     </div>
 </div>
+
+@*<script>
+    $("#editProductBtn").click(() => {
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("Create", "Product")",
+            data: $("#CreateForm").serialize()
+
+        })
+            .done((response) => {
+                $("#ProductTableContainer").html(response);
+                $("#CreateForm").trigger("reset");
+            })
+            .fail((XMLHttpRequest, textStatus, errorThrown) => {
+                alert("Fail!");
+            })
+            ;
+    });
+</script>*@
 
 
 

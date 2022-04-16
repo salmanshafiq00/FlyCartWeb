@@ -10,11 +10,11 @@ namespace FlyCart.Services
 {
     public class CatagoryServices
     {
-        public Catagory GetCatagory(int Id)
+        public Catagory GetCatagory(int? CatagoryID)
         {
             using (var context = new FlyCartContext())
             {
-                return context.Catagories.Find(Id);
+                return context.Catagories.Find(CatagoryID);
             }
         }
         public List<Catagory> GetCatagories()

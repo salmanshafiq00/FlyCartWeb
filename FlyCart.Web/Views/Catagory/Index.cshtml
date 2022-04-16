@@ -4,6 +4,7 @@
 }
 
 <h2>Catagory List</h2>
+@Html.ActionLink("Create", "Create","Catagory","", new {@class = "btn btn-primary" })
 <table class="table table-bordered table-condensed table-striped table-hover">
     <thead>
         <tr>
@@ -19,16 +20,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.ID</td>
+            <td>@item.CatagoryID</td>
             <td>@item.Name</td>
             <td>@item.IsActive</td>
             <td>@item.IsDelete</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { item.ID })
-                @Html.ActionLink("Delete", "Delete", new { item.ID })
-
-                @*@Html.Action("Edit","Catagory", new { item.ID })
-                    @Html.Action("Delete", "Catagory", new { item.ID })*@
+                @Html.ActionLink("Edit", "Edit", new { item.CatagoryID, @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { item.CatagoryID, @class = "btn btn-danger" })
             </td>
         </tr>
     }

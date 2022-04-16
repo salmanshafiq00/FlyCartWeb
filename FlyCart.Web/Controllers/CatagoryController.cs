@@ -27,14 +27,22 @@ namespace FlyCart.Web.Controllers
         [HttpPost]
         public ActionResult Create(Catagory catagory)
         {
+            if (ModelState.IsValid)
+            {
             catagoryServices.CreateCatagory(catagory);
-            return RedirectToAction("Index", "Catagory");
+             return RedirectToAction("Index", "Catagory");
+            }
+            else
+            {
+                ViewBag.err = ModelState.Values.SelectMany(s => s.Errors);
+            }
+            return View();
         }
 
         [HttpGet]
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int CatagoryID)
         {
-            var sldCatagory = catagoryServices.GetCatagory(Id);
+            var sldCatagory = catagoryServices.GetCatagory(CatagoryID);
             return View(sldCatagory);
         }
 
@@ -46,16 +54,16 @@ namespace FlyCart.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(int Id)
+        public ActionResult Delete(int CatagoryID)
         {
-            var sldCatagory = catagoryServices.GetCatagory(Id);
+            var sldCatagory = catagoryServices.GetCatagory(CatagoryID);
             return View(sldCatagory);
         }
 
         [HttpPost]
         public ActionResult Delete(Catagory catagory)
         {
-            var dltCatagory = catagoryServices.GetCatagory(catagory.ID);
+            var dltCatagory = catagoryServices.GetCatagory(catagory.CatagoryID);
             catagoryServices.DeleteCatagory(dltCatagory);
             return RedirectToAction("Index", "Catagory");
         }

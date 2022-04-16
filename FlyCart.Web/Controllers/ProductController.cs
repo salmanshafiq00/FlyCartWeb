@@ -1,5 +1,7 @@
-﻿using FlyCart.Entities;
+﻿using FlyCart.Database;
+using FlyCart.Entities;
 using FlyCart.Services;
+using FlyCart.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,11 @@ namespace FlyCart.Web.Controllers
 {
     public class ProductController : Controller
     {
+        FlyCartContext db = new FlyCartContext();
         ProductServices productServices = new ProductServices();
         public ActionResult Index()
         {
-           
+            ViewBag.Catagory = new SelectList(db.Catagories, "ID", "Name"); 
             return View();
         }
 
@@ -31,8 +34,14 @@ namespace FlyCart.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase Images)
         {
+            var fileName = Images.FileName;
+            var localPath = Server.MapPath("~/Images/") + fileName;
+            var serverPath = "~/Images/" +fileName;
+            Images.SaveAs(localPath);
+            product.Images = serverPath;
+
             productServices.CreateProduct(product);
             return RedirectToAction("ProductList", "Product");
         }
@@ -41,6 +50,7 @@ namespace FlyCart.Web.Controllers
         public ActionResult Edit(int ProductID)
         {
             var sldProduct = productServices.GetProduct(ProductID);
+            ViewBag.Catagory = db.Catagories.ToList();
             return View(sldProduct);
         }
 

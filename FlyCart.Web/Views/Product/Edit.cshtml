@@ -72,8 +72,7 @@
         $.ajax({
             method: "POST",
             url: "@Url.Action("Edit", "Product")",
-            data: $("#CreateForm").serialize()
-
+            data: $("#EditForm").serialize()
         })
             .done((response) => {
                 $("#ProductTableContainer").html(response);

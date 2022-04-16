@@ -4,10 +4,11 @@
 
 <h2>Index</h2>
 <div>
-    @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+    @using (Html.BeginForm("Index", "Product", FormMethod.Post, new { @class = "form-inline" }))
     {
-        @Html.TextBox("searchString", "", new { @class = "form-control" })
+        @Html.TextBox("searchString", "", new { @class = "form-control d-inline" })
         <input type="button" id="btnSearch" name="" value="Search" class="btn btn-primary" />
+
     }
 
 </div>
@@ -21,7 +22,7 @@
 </div>
 
 
- @*Modal For Product*@
+@*Modal For Product*@
 <div class="modal fade" id="createProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -34,6 +35,8 @@
             <div class="modal-body container">
                 <div style="margin-left: 100px">
                     @Html.Partial("_PartialCreate")
+                    @*@Html.Partial("_PartialCreate", null, new ViewDataDictionary { { "ViewBag", catagory } })*@
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -54,6 +57,23 @@
         })
             .done((response) => {
                 $("#ProductTableContainer").html(response);
+            })
+            .fail((XMLHttpRequest, textStatus, errorThrown) => {
+                alert("Fail!");
+            })
+            ;
+    });
+</script>
+
+<script>
+    $("#btnEdit").click(() => {
+        $.ajax({
+            method: "GET",
+            url: "@Url.Action("Edit", "Product")",
+        })
+            .done((response) => {
+                $("#ProductTableContainer").html(response);
+                $("#CreateForm").trigger("reset");
             })
             .fail((XMLHttpRequest, textStatus, errorThrown) => {
                 alert("Fail!");

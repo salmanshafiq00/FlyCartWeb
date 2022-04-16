@@ -1,7 +1,10 @@
-﻿
-@model Product
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "CreateForm" }))
+﻿@model Product
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "CreateForm", enctype = "multipart/form-data" }))
 {
+    @*<form action="/Product/Create" method="post" enctype="multipart/form-data" class="form-horizontal" id="CreateForm">*@
+
+
     <div class="form-group">
         @Html.HiddenFor(p => p.ProductID)
 
@@ -9,72 +12,95 @@
 
     <div class="form-group">
         @Html.LabelFor(p => p.ProductName, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control" })
+        @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control", id = "ProductName" })
 
     </div>
 
     <div class="form-group">
         @Html.LabelFor(p => p.CatagoryID, new { @class = "controll-label" })
-        @Html.TextBoxFor(p => p.CatagoryID, new { @class = "form-control" })
+        @*@Html.DropDownListFor(p => p.CatagoryID, (IEnumerable<SelectListItem>)catagory)*@
+        @Html.TextBoxFor(p => p.CatagoryID, new { @class = "form-control", id = "CatagoryID" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(p => p.ShortDescription, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.ShortDescription, new { @class = "form-control" })
+        @Html.TextBoxFor(p => p.ShortDescription, new { @class = "form-control", id = "ShortDescription" })
 
     </div>
 
 
     <div class="form-group">
         @Html.LabelFor(p => p.LongDescription, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.LongDescription, new { @class = "form-control" })
+        @Html.TextBoxFor(p => p.LongDescription, new { @class = "form-control", id = "LongDescription" })
     </div>
 
 
     <div class="form-group">
         @Html.LabelFor(p => p.Price, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Price, new { @class = "form-control" })
+        @Html.TextBoxFor(p => p.Price, new { @class = "form-control", id = "Price" })
 
     </div>
 
     <div class="form-group">
         @Html.LabelFor(p => p.Weight, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Weight, new { @class = "form-control" })
+        @Html.TextBoxFor(p => p.Weight, new { @class = "form-control", id = "Weight" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(p => p.Images, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Images, new { @class = "form-control" })
+        @*@Html.TextBoxFor(p => p.Images, new { @class = "form-control" })*@
+        <input type="hidden" name="Images" id="Images" />
+        <input type="file" name="Images" class="form-control" id="Images" />
 
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(p => p.Stock, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Stock, new { @class = "form-control" })
+    <div style="margin-left:-10px">
+        @Html.LabelFor(p => p.Stock, new { @class = "form-check-label" })
+        @Html.CheckBoxFor(p => p.Stock, new { @class = "form-check-input", id = "Stock" })
 
     </div>
 
     <div class="form-group">
         <input type="button" id="btnCreate" value="Create" class="btn btn-primary" />
     </div>
-
+    @*</form>*@
 }
 
 <script>
-    $("#btnCreate").click(() => {
-        $.ajax({
-            method: "POST",
-            url: "@Url.Action("Create", "Product")",
-            data: $("#CreateForm").serialize()
+    $(document).ready(function () {
 
+    })
+    $("#btnCreate").click(() => {
+        var imgData = $("input[type=file]").get(0).files;
+        var data = new FormData();
+        data.append("ProductName", $("#ProductName").val());
+        data.append("CatagoryID", $("#CatagoryID").val());
+        data.append("ShortDescription", $("#ShortDescription").val());
+        data.append("LongDescription", $("#LongDescription").val());
+        data.append("Price", $("#Price").val());
+        data.append("Weight", $("#Weight").val());
+        data.append("Images", imgData[0]);
+        data.append("Stock", $("#Stock").val());
+
+        $.ajax({
+        async: true,
+        method: "POST",
+        url: "@Url.Action("Create", "Product")",
+        data: data,
+        contentType: false,
+        processData: false,
         })
             .done((response) => {
-                $("#ProductTableContainer").html(response);
-                $("#CreateForm").trigger("reset");
-            })
+             debugger;
+            $("#ProductTableContainer").html(response);
+            $("#CreateForm").trigger("reset");
+        })
             .fail((XMLHttpRequest, textStatus, errorThrown) => {
-                alert("Fail!");
-            })
-            ;
+                debugger;
+            alert("Fail!");
+        });
+
     });
 </script>
+
+

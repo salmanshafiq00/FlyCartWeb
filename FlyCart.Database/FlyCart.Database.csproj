@@ -51,9 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FlyCartContext.cs" />
-    <Compile Include="Migrations\202204120906361_Init.cs" />
-    <Compile Include="Migrations\202204120906361_Init.Designer.cs">
-      <DependentUpon>202204120906361_Init.cs</DependentUpon>
+    <Compile Include="Migrations\202204151449474_init.cs" />
+    <Compile Include="Migrations\202204151449474_init.Designer.cs">
+      <DependentUpon>202204151449474_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204152031436_addingValidation.cs" />
+    <Compile Include="Migrations\202204152031436_addingValidation.Designer.cs">
+      <DependentUpon>202204152031436_addingValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204152052228_idNotRequired.cs" />
+    <Compile Include="Migrations\202204152052228_idNotRequired.Designer.cs">
+      <DependentUpon>202204152052228_idNotRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,8 +77,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204120906361_Init.resx">
-      <DependentUpon>202204120906361_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202204151449474_init.resx">
+      <DependentUpon>202204151449474_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204152031436_addingValidation.resx">
+      <DependentUpon>202204152031436_addingValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204152052228_idNotRequired.resx">
+      <DependentUpon>202204152052228_idNotRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
