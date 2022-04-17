@@ -23,6 +23,10 @@ textarea {
     max-width: 280px;
 }
 
+#DDCatagoryID,
+input {
+    max-width: 380px;
+}
 /* For carousel*/
 /*.carousel-inner img {
     width: 100%;

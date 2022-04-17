@@ -3,84 +3,95 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2 class="container ml-md1" >Edit Product</h2>
 
 
 @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "EditForm", enctype = "multipart/form-data" }))
 {
-    <div class="form-group">
-        @Html.HiddenFor(p => p.ProductID)
+    
+    <div class="row container m-auto">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.HiddenFor(p => p.ProductID)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.ProductName, new { @class = "control-label" })
+                @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.CatagoryID, new { @class = "controll-label" })
+
+
+                <select name="CatagoryID" id="DDCatagoryID" class="form-control">
+                    @foreach (var item in ViewBag.Catagory)
+                    {
+                        if (item.CatagoryID == Model.CatagoryID)
+                        {
+                            <option value="@item.CatagoryID" class="dropdown-item" selected="selected">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.CatagoryID" class="dropdown-item">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.ShortDescription, new { @class = "control-label" })
+                @Html.TextBoxFor(p => p.ShortDescription, new { @class = "form-control" })
+
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.LongDescription, new { @class = "control-label" })
+                @Html.TextBoxFor(p => p.LongDescription, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(p => p.Price, new { @class = "control-label" })
+                @Html.TextBoxFor(p => p.Price, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.Weight, new { @class = "control-label" })
+                @Html.TextBoxFor(p => p.Weight, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.Images, new { @class = "control-label" })
+                @*<input type="hidden" name="Images" id="Images" />*@
+                <input type="file" name="Images" class="form-control" id="Images" />
+
+            </div>
+
+            <div class="form-check-inline">
+                @Html.LabelFor(p => p.Stock, new { @class = "form-check-label pr-1" })
+                @Html.CheckBoxFor(p => p.Stock, new { @class = "form-check-input", id = "Stock" })
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" id="btnEdit" value="Update" class="btn btn-primary" />
+                @Html.ActionLink("Back", "Index", "Product", new { @class = "btn btn-info" })
+
+            </div>
+        </div>
 
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(p => p.ProductName, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control" })
-
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(p => p.CatagoryID, new { @class = "controll-label" })
 
 
-        <select name="CatagoryID" class="form-control">
-            @foreach (var item in ViewBag.Catagory)
-            {
-                if (item.CatagoryID == Model.CatagoryID)
-                {
-                    <option value="@item.CatagoryID" class="dropdown-item" selected="selected">@item.Name</option>
-                }
-                else
-                {
-                    <option value="@item.CatagoryID" class="dropdown-item">@item.Name</option>
-                }
-            }
-        </select>
-    </div>
 
-
-    <div class="form-group">
-        @Html.LabelFor(p => p.ShortDescription, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.ShortDescription, new { @class = "form-control" })
-
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(p => p.LongDescription, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.LongDescription, new { @class = "form-control" })
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(p => p.Price, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Price, new { @class = "form-control" })
-
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(p => p.Weight, new { @class = "control-label" })
-        @Html.TextBoxFor(p => p.Weight, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(p => p.Images, new { @class = "control-label" })
-        @*<input type="hidden" name="Images" id="Images" />*@
-        <input type="file" name="Images" class="form-control" id="Images" />
-
-    </div>
-
-    <div class="form-check-inline">
-        @Html.LabelFor(p => p.Stock, new { @class = "form-check-label pr-1" })
-        @Html.CheckBoxFor(p => p.Stock, new { @class = "form-check-input", id = "Stock" })
-
-    </div>
-
-    <div class="form-group">
-        <input type="submit" id="btnEdit" value="Update" class="btn btn-primary" />
-        @Html.ActionLink("Back", "Index", "Product", new { @class="btn btn-info"} )
-
-    </div>
 
 }
 
