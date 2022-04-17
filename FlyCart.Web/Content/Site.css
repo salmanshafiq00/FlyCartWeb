@@ -23,7 +23,7 @@ textarea {
     max-width: 280px;
 }
 
-#DDCatagoryID,
+#CatagoryID,
 input {
     max-width: 380px;
 }
@@ -36,7 +36,17 @@ input {
     width: 100%;
     height: 400px;
 }
-#cardDiv:hover {
-    
+
+/*.nav-item > a {
+    color: whitesmoke;
+    font-size: medium;
+    font-weight: 600;
 }
+
+.nav-item > a:hover {
+    color: orange;
+
+}*/
+
+
 

@@ -67,6 +67,10 @@
     <Compile Include="Migrations\202204160606358_removeVirtual.Designer.cs">
       <DependentUpon>202204160606358_removeVirtual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204170331318_AddingDateTime.cs" />
+    <Compile Include="Migrations\202204170331318_AddingDateTime.Designer.cs">
+      <DependentUpon>202204170331318_AddingDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204160606358_removeVirtual.resx">
       <DependentUpon>202204160606358_removeVirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204170331318_AddingDateTime.resx">
+      <DependentUpon>202204170331318_AddingDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

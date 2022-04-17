@@ -14,6 +14,7 @@ namespace FlyCart.Entities
         [ForeignKey("Catagory")]
         public int CatagoryID { get; set; }
         public virtual Catagory Catagory { get; set; }
+        public DateTime CreatedDate { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public virtual List<ProductOption> ProductOptions { get; set; }

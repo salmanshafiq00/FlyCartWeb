@@ -26,7 +26,7 @@
                 @Html.LabelFor(p => p.CatagoryID, new { @class = "controll-label" })
 
 
-                <select name="CatagoryID" id="DDCatagoryID" class="form-control">
+                <select name="CatagoryID" id="CatagoryID" class="form-control">
                     @foreach (var item in ViewBag.Catagory)
                     {
                         if (item.CatagoryID == Model.CatagoryID)
@@ -41,6 +41,11 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                @Html.LabelFor(p => p.CreatedDate, new { @class = "control-label" })
+                @*@Html.TextBoxFor(p => p.CreatedDate, new { @class = "form-control", id = "CreatedDate" })*@
+                <input type="date" name="CreatedDate" class="form-control" , id="CreatedDate" />
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(p => p.ShortDescription, new { @class = "control-label" })
@@ -49,13 +54,15 @@
             </div>
 
 
+            
+
+        </div>
+        <div class="col-md-6">
             <div class="form-group">
                 @Html.LabelFor(p => p.LongDescription, new { @class = "control-label" })
                 @Html.TextBoxFor(p => p.LongDescription, new { @class = "form-control" })
             </div>
 
-        </div>
-        <div class="col-md-6">
             <div class="form-group">
                 @Html.LabelFor(p => p.Price, new { @class = "control-label" })
                 @Html.TextBoxFor(p => p.Price, new { @class = "form-control" })

@@ -16,6 +16,8 @@ namespace FlyCart.Web.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string UserChoice { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

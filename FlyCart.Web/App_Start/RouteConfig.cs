@@ -11,13 +11,30 @@ namespace FlyCart.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapRoute(
+               name: "Home",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+           );
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+               name: "Product",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional }
+           );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+               name: "Catagory",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Catagory", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "Default",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          );
+
         }
     }
 }

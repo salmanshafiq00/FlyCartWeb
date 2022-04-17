@@ -14,6 +14,7 @@ namespace FlyCart.Web.Controllers
     {
         FlyCartContext db = new FlyCartContext();
         ProductServices productServices = new ProductServices();
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
             //ViewData["catagory"] = new SelectList(db.Catagories, "ID", "Name"); 
