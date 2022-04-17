@@ -180,7 +180,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -196,6 +196,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\download %281%29.jpg" />
     <Content Include="Images\download.jpg" />
+    <Content Include="Images\pexels-anh-khac-6318739.jpg" />
+    <Content Include="Images\pexels-bess-hamiti-35188.jpg" />
+    <Content Include="Images\pexels-dom-j-45982.jpg" />
+    <Content Include="Images\pexels-mentatdgt-1336873.jpg" />
+    <Content Include="Images\pexels-mica-asato-1082528.jpg" />
     <Content Include="Images\photo-1.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -360,9 +365,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Catagory\_Delete.cshtml" />
+    <Content Include="Views\Home\_ProductDetails.cshtml" />
+    <Content Include="Views\Home\ProductDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

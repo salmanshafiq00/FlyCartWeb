@@ -1,0 +1,44 @@
+﻿@using FlyCart.Web.Models
+@model ProductViewModel
+
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+
+
+<div class="container">
+    <h2>ProductDetails</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Url.Content(Model.Products.Images)" width="300" height="300" alt="Alternate Text" />
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Products.ProductName</h2>
+            <h4 class="text-danger text-b">@Model.Products.Price</h4>
+            <p class="text-danger"><del>@{ @Model.Products.Price; }</del></p>
+            <div>
+                @Html.LabelFor(p => p.ProductOptions.OptionGroup.OptionGroupName)
+                @*@Html.DropDownListFor(p => p.ProductOptions.OptionGroup.OptionGroupName, new SelectList(Model.ProductOptions.OptionGroup, Model.ProductOptions.OptionGroup.OptionGroupID, Model.ProductOptions.OptionGroup.OptionGroupName));*@
+            </div>
+            <div>
+                @Html.ActionLink("Buy Now", "Order", null, new { @class = "btn btn-info btn-lg" })
+                @Html.ActionLink("Add To Cart", "Order", null, new { @class = "btn btn-secondary btn-lg" })
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    <div>
+        <div class="border mt-3 p-4">
+            <h2>Summery</h2>
+            <p>@Model.Products.ShortDescription</p>
+        </div>
+
+        <div class="border mt-3 p-4">
+            <h2>Details</h2>
+            <p>@Model.Products.LongDescription</p>
+        </div>
+    </div>
+</div>

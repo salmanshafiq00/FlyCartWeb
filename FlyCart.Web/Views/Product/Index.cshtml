@@ -4,19 +4,19 @@
      
 }
 
-<h2 class="text-center">Product List</h2>
+<h2 class="text-center mt-2">Product List</h2>
 @*Search Mechanism*@
 <div>
     @using (Html.BeginForm("Index", "Product", FormMethod.Post, new { @class = "form-inline" }))
     {
-        @Html.TextBox("searchString", "", new { @class = "form-control d-inline" })
+        @Html.TextBox("searchString", "", new { @class = "form-control d-inline", placeholder = "Search by name" })
         <input type="button" id="btnSearch" name="" value="Search" class="btn btn-primary" />
 
     }
 
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProduct"> Create </button>
+<button type="button" class="btn btn-primary mt-2 mb-2" data-toggle="modal" data-target="#createProduct"> Create </button>
 
 <div id="productListSection">
     @{
@@ -38,8 +38,6 @@
             <div class="modal-body container">
                 <div style="margin-left: 100px">
                     @Html.Partial("_PartialCreate",null, new ViewDataDictionary { { "Catagory", (List<Catagory>)ViewData["catagory"]}})
-                    @*@Html.Partial("_PartialCreate", null, new ViewDataDictionary { { "ViewBag", catagory } })*@
-
                 </div>
             </div>
             <div class="modal-footer">

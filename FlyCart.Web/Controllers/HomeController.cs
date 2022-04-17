@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FlyCart.Database;
+using FlyCart.Services;
+using FlyCart.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +11,24 @@ namespace FlyCart.Web.Controllers
 {
     public class HomeController : Controller
     {
+        ProductServices productServices = new ProductServices();
+        FlyCartContext context = new FlyCartContext();
         public ActionResult Index()
         {
-            return View();
+            var pList = productServices.GetProducts();
+            return View(pList);
+        }
+
+        public ActionResult ProductDetails(int ProductID)
+        {
+            var product = productServices.GetProduct(ProductID);
+            var pOption = context.ProductOptions.Find(ProductID);
+
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.Products = product;
+            productViewModel.ProductOptions = pOption;
+            
+            return View(productViewModel);
         }
 
         public ActionResult About()
